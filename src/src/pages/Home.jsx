@@ -5,6 +5,7 @@ function Header() {
     <header className="home-header">
       <div>
         <div className="brand">PayGate</div>
+
         <div className="merchant-name">
           商户 A
           <span className="verified">✓</span>
@@ -27,6 +28,7 @@ function BalanceCard() {
     <section className="home-balance">
       <div className="balance-top">
         <span>总资产（USDT）</span>
+
         <button onClick={() => setHidden(!hidden)}>
           {hidden ? '○' : '◉'}
         </button>
@@ -70,7 +72,11 @@ function BalanceCard() {
 
       <div className="today-orders">
         <span>今日订单</span>
-        <b>{hidden ? '••••' : '152'} <small>笔</small></b>
+
+        <b>
+          {hidden ? '••••' : '152'}
+          <small> 笔</small>
+        </b>
       </div>
     </section>
   )
@@ -87,12 +93,18 @@ function PaymentMethods() {
     <section className="home-card">
       <div className="card-title">
         <h2>收款方式</h2>
-        <button>管理收款方式 ›</button>
+
+        <button>
+          管理收款方式 ›
+        </button>
       </div>
 
       <div className="payment-methods">
         {methods.map(([icon, name, tone]) => (
-          <button className="payment-item" key={name}>
+          <button
+            className="payment-item"
+            key={name}
+          >
             <span className={`payment-icon ${tone}`}>
               {icon}
             </span>
@@ -108,6 +120,16 @@ function PaymentMethods() {
 }
 
 function IncomeTrend() {
+  const points = [
+    [15, 188],
+    [126, 145],
+    [237, 94],
+    [348, 136],
+    [459, 62],
+    [570, 112],
+    [685, 28]
+  ]
+
   return (
     <section className="home-card">
       <div className="card-title">
@@ -140,7 +162,9 @@ function IncomeTrend() {
             preserveAspectRatio="none"
           >
             <polyline
-              points="15,188 126,145 237,94 348,136 459,62 570,112 685,28"
+              points={points
+                .map(point => point.join(','))
+                .join(' ')}
               fill="none"
               stroke="#2879f5"
               strokeWidth="4"
@@ -148,15 +172,7 @@ function IncomeTrend() {
               strokeLinejoin="round"
             />
 
-            {[
-              [15, 188],
-              [126, 145],
-              [237, 94],
-              [348, 136],
-              [459, 62],
-              [570, 112],
-              [685, 28]
-            ].map(([x, y]) => (
+            {points.map(([x, y]) => (
               <circle
                 key={`${x}-${y}`}
                 cx={x}
@@ -181,7 +197,9 @@ function IncomeTrend() {
           '09-01',
           '09-02'
         ].map(date => (
-          <span key={date}>{date}</span>
+          <span key={date}>
+            {date}
+          </span>
         ))}
       </div>
     </section>
@@ -190,10 +208,38 @@ function IncomeTrend() {
 
 function LatestOrders() {
   const orders = [
-    ['微', 'ORD202609020001', '+100.00', '微信支付', '已支付', 'paid'],
-    ['支', 'ORD202609020002', '+50.00', '支付宝', '已支付', 'paid'],
-    ['▤', 'ORD202609020003', '+300.00', '银行卡', '处理中', 'processing'],
-    ['微', 'ORD202609020004', '+80.00', '微信支付', '已取消', 'cancelled']
+    [
+      '微',
+      'ORD202609020001',
+      '+100.00',
+      '微信支付',
+      '已支付',
+      'paid'
+    ],
+    [
+      '支',
+      'ORD202609020002',
+      '+50.00',
+      '支付宝',
+      '已支付',
+      'paid'
+    ],
+    [
+      '▤',
+      'ORD202609020003',
+      '+300.00',
+      '银行卡',
+      '处理中',
+      'processing'
+    ],
+    [
+      '微',
+      'ORD202609020004',
+      '+80.00',
+      '微信支付',
+      '已取消',
+      'cancelled'
+    ]
   ]
 
   return (
@@ -201,18 +247,26 @@ function LatestOrders() {
       <div className="card-title">
         <div>
           <h2>最新订单</h2>
+
           <small className="title-sub">
             今日订单 152 笔
           </small>
         </div>
 
-        <button>查看全部 ›</button>
+        <button>
+          查看全部 ›
+        </button>
       </div>
 
       <div className="home-orders">
         {orders.map(order => (
-          <button className="home-order" key={order[1]}>
-            <span className={`order-icon ${order[5]}`}>
+          <button
+            className="home-order"
+            key={order[1]}
+          >
+            <span
+              className={`order-icon ${order[5]}`}
+            >
               {order[0]}
             </span>
 
@@ -223,6 +277,7 @@ function LatestOrders() {
 
             <span className="order-money">
               <b>{order[2]} USDT</b>
+
               <em className={order[5]}>
                 {order[4]}
               </em>
@@ -245,9 +300,14 @@ function QuickActions() {
   return (
     <section className="quick-actions">
       {actions.map(([icon, title, desc]) => (
-        <button className="quick-item" key={title}>
+        <button
+          className="quick-item"
+          key={title}
+        >
           <span>{icon}</span>
+
           <strong>{title}</strong>
+
           <small>{desc}</small>
         </button>
       ))}
@@ -255,18 +315,48 @@ function QuickActions() {
   )
 }
 
+function BottomNavigation() {
+  const items = [
+    ['⌂', '首页'],
+    ['▣', '订单'],
+    ['▱', '钱包'],
+    ['⇄', '结算'],
+    ['♙', '我的']
+  ]
+
+  return (
+    <nav className="home-bottom-nav">
+      {items.map(([icon, name], index) => (
+        <button
+          className={index === 0 ? 'active' : ''}
+          key={name}
+        >
+          <span>{icon}</span>
+          <b>{name}</b>
+        </button>
+      ))}
+    </nav>
+  )
+}
+
 export default function Home() {
   return (
-    <>
+    <div className="app">
       <Header />
 
       <main className="home-main">
         <BalanceCard />
+
         <PaymentMethods />
+
         <IncomeTrend />
+
         <LatestOrders />
+
         <QuickActions />
       </main>
-    </>
+
+      <BottomNavigation />
+    </div>
   )
 }
