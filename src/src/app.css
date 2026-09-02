@@ -22,9 +22,9 @@ body {
     sans-serif;
 }
 
-button,
-input {
+button {
   font: inherit;
+  cursor: pointer;
 }
 
 .app {
@@ -33,17 +33,517 @@ input {
   min-height: 100vh;
   margin: 0 auto;
   background: #f7f9fc;
-  padding: 40px 18px;
 }
 
-.app h1 {
-  margin: 0 0 8px;
+/* ===== 首页顶部 ===== */
+
+.home-header {
+  padding: 22px 18px 16px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.brand {
   color: #1769ee;
-  font-size: 28px;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
-.app p {
-  margin: 0;
-  color: #8793a3;
+.merchant-name {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 9px;
+  color: #26334a;
   font-size: 13px;
+  font-weight: 600;
+}
+
+.verified {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #1769ee;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.merchant-status {
+  color: #8793a3;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.header-actions {
+  display: flex;
+  gap: 7px;
+}
+
+.header-actions button {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 10px;
+  background: #fff;
+  color: #26334a;
+  font-size: 20px;
+}
+
+/* ===== 首页主体 ===== */
+
+.home-main {
+  padding: 0 13px 35px;
+}
+
+/* ===== 资产卡片 ===== */
+
+.home-balance {
+  padding: 20px 17px 15px;
+  border-radius: 18px;
+  color: #fff;
+  background: linear-gradient(135deg, #2d80f7, #1768ee);
+  box-shadow: 0 13px 28px rgba(31, 108, 239, 0.23);
+}
+
+.balance-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #dceaff;
+  font-size: 12px;
+}
+
+.balance-top button {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 18px;
+}
+
+.balance-number {
+  margin-top: 10px;
+  font-size: 34px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.balance-usd {
+  margin-top: 5px;
+  color: #dceaff;
+  font-size: 11px;
+}
+
+.balance-divider {
+  height: 1px;
+  margin: 18px 0 14px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.balance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.balance-grid > div {
+  min-width: 0;
+  padding: 0 7px;
+  border-right: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.balance-grid > div:first-child {
+  padding-left: 0;
+}
+
+.balance-grid > div:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.balance-grid span,
+.balance-grid small {
+  display: block;
+  color: #d9e8ff;
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+.balance-grid b {
+  display: block;
+  margin: 6px 0 3px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.today-orders {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 11px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  color: #dceaff;
+  font-size: 9px;
+}
+
+.today-orders b {
+  color: #fff;
+  font-size: 13px;
+}
+
+.today-orders small {
+  font-size: 9px;
+  font-weight: 400;
+}
+
+/* ===== 通用卡片 ===== */
+
+.home-card {
+  margin-top: 13px;
+  padding: 16px 14px 13px;
+  border: 1px solid #e9edf3;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 7px 20px rgba(30, 54, 86, 0.05);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+
+.card-title h2 {
+  margin: 0;
+  color: #1b273d;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.card-title button {
+  border: 0;
+  background: transparent;
+  color: #1769ee;
+  font-size: 10px;
+}
+
+.title-sub {
+  display: block;
+  margin-top: 4px;
+  color: #929cac;
+  font-size: 8px;
+}
+
+/* ===== 收款方式 ===== */
+
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.payment-item {
+  min-width: 0;
+  padding: 10px 3px 9px;
+  border: 1px solid #e7ebf1;
+  border-radius: 12px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.payment-icon {
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.payment-icon.wechat {
+  background: #1db954;
+}
+
+.payment-icon.alipay {
+  background: #1677ff;
+}
+
+.payment-icon.bank {
+  background: #f79519;
+}
+
+.payment-item strong {
+  color: #26334a;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.payment-item small {
+  padding: 3px 6px;
+  border-radius: 5px;
+  background: #eaf9f0;
+  color: #19a95b;
+  font-size: 8px;
+}
+
+/* ===== 收入趋势 ===== */
+
+.period {
+  padding: 6px 8px !important;
+  border-radius: 9px !important;
+  background: #f5f7fa !important;
+  color: #59677a !important;
+}
+
+.trend-chart {
+  height: 170px;
+  display: flex;
+}
+
+.trend-y {
+  width: 40px;
+  padding: 5px 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #7d899a;
+  font-size: 8px;
+}
+
+.trend-area {
+  position: relative;
+  flex: 1;
+  height: 165px;
+}
+
+.trend-grid {
+  position: absolute;
+  inset: 5px 0 15px;
+}
+
+.trend-grid i {
+  display: block;
+  height: 25%;
+  border-top: 1px solid #edf1f5;
+}
+
+.trend-area svg {
+  position: absolute;
+  inset: 5px 0 0;
+  width: 100%;
+  height: 155px;
+}
+
+.trend-dates {
+  margin-left: 40px;
+  display: flex;
+  justify-content: space-between;
+  color: #7d899a;
+  font-size: 8px;
+}
+
+/* ===== 首页订单 ===== */
+
+.home-orders {
+  border-top: 1px solid #eef1f5;
+}
+
+.home-order {
+  width: 100%;
+  min-height: 53px;
+  padding: 9px 1px;
+  border: 0;
+  border-bottom: 1px solid #eef1f5;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-align: left;
+}
+
+.home-order:last-child {
+  border-bottom: 0;
+}
+
+.order-icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.order-icon.paid {
+  background: #e9faf1;
+  color: #20a866;
+}
+
+.order-icon.processing {
+  background: #fff4e7;
+  color: #ee8a20;
+}
+
+.order-icon.cancelled {
+  background: #f2f4f7;
+  color: #8994a5;
+}
+
+.order-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.order-info strong {
+  display: block;
+  overflow: hidden;
+  color: #26334a;
+  font-size: 10px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.order-info small {
+  display: block;
+  margin-top: 4px;
+  color: #929cac;
+  font-size: 8px;
+}
+
+.order-money {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.order-money b {
+  display: block;
+  color: #1c2940;
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.order-money em {
+  display: inline-block;
+  margin-top: 3px;
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-size: 7px;
+  font-style: normal;
+}
+
+.order-money em.paid {
+  background: #eaf9f1;
+  color: #1b9d5c;
+}
+
+.order-money em.processing {
+  background: #fff6df;
+  color: #d38b16;
+}
+
+.order-money em.cancelled {
+  background: #f4f5f7;
+  color: #8d96a4;
+}
+
+/* ===== 快捷操作 ===== */
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  margin-top: 13px;
+}
+
+.quick-item {
+  min-width: 0;
+  padding: 11px 2px;
+  border: 1px solid #e9edf3;
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 6px 17px rgba(30, 54, 86, 0.045);
+}
+
+.quick-item > span {
+  width: 37px;
+  height: 37px;
+  margin: 0 auto 7px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #edf4ff;
+  color: #2874ef;
+  font-size: 18px;
+}
+
+.quick-item strong {
+  display: block;
+  color: #26334a;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.quick-item small {
+  display: block;
+  overflow: hidden;
+  margin-top: 4px;
+  color: #929cac;
+  font-size: 7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 360px) {
+  .home-main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .home-balance {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .balance-grid > div {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .balance-grid b {
+    font-size: 11px;
+  }
+
+  .quick-actions {
+    gap: 5px;
+  }
+
+  .quick-item small {
+    font-size: 6px;
+  }
+}
+
+@media (min-width: 600px) {
+  .app {
+    margin: 24px auto;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(20, 40, 65, 0.2);
+  }
 }
