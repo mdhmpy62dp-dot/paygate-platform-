@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import USDTPage from './USDTPage'
+import CreateOrder from './CreateOrder'
 
 function Header() {
   return (
@@ -311,6 +311,16 @@ export default function Home() {
     )
   }
 
+  if (page === 'create-order') {
+    return (
+      <div className="app">
+        <CreateOrder
+          back={() => setPage('home')}
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="app">
       <Header />
@@ -328,7 +338,8 @@ export default function Home() {
         <LatestOrders />
 
         <QuickActions
-          onCreateOrder={() => setPage('create-order')}/>
+          onCreateOrder={() => setPage('create-order')}
+        />
 
       </main>
 
