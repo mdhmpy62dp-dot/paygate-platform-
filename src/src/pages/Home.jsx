@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import USDTPage from './USDTPage'
 
 function Header() {
   return (
@@ -82,12 +83,11 @@ function BalanceCard() {
   )
 }
 
-function PaymentMethods() {
+function PaymentMethods({ onUSDT }) {
   const methods = [
     ['微', '微信支付', 'wechat'],
     ['支', '支付宝', 'alipay'],
-    ['▤', '银行卡收款', 'bank'],
-    ['₮', 'USDT TRC20', 'usdt']
+    ['▤', '银行卡收款', 'bank']
   ]
 
   return (
@@ -98,8 +98,12 @@ function PaymentMethods() {
       </div>
 
       <div className="payment-methods">
+
         {methods.map(([icon, name, tone]) => (
-          <button className="payment-item" key={name}>
+          <button
+            className="payment-item"
+            key={name}
+          >
             <span className={`payment-icon ${tone}`}>
               {icon}
             </span>
@@ -109,6 +113,20 @@ function PaymentMethods() {
             <small>已开启</small>
           </button>
         ))}
+
+        <button
+          className="payment-item"
+          onClick={onUSDT}
+        >
+          <span className="payment-icon usdt">
+            ₮
+          </span>
+
+          <strong>USDT TRC20</strong>
+
+          <small>已开启</small>
+        </button>
+
       </div>
     </section>
   )
@@ -305,16 +323,36 @@ function BottomNavigation() {
 }
 
 export default function Home() {
+  const [page, setPage] = useState('home')
+
+  if (page === 'usdt') {
+    return (
+      <div className="app">
+        <USDTPage
+          back={() => setPage('home')}
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="app">
       <Header />
 
       <main className="home-main">
+
         <BalanceCard />
-        <PaymentMethods />
+
+        <PaymentMethods
+          onUSDT={() => setPage('usdt')}
+        />
+
         <IncomeTrend />
+
         <LatestOrders />
+
         <QuickActions />
+
       </main>
 
       <BottomNavigation />
