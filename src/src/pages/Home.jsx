@@ -84,9 +84,10 @@ function BalanceCard() {
 
 function PaymentMethods() {
   const methods = [
-    ['微', '微信支付', 'wechat'],
-    ['支', '支付宝', 'alipay'],
-    ['▤', '银行卡收款', 'bank']
+    ['₮', 'USDT', 'TRON / TRC20', 'usdt'],
+    ['微', '微信支付', '已开启', 'wechat'],
+    ['支', '支付宝', '已开启', 'alipay'],
+    ['▤', '银行卡收款', '已开启', 'bank']
   ]
 
   return (
@@ -100,7 +101,7 @@ function PaymentMethods() {
       </div>
 
       <div className="payment-methods">
-        {methods.map(([icon, name, tone]) => (
+        {methods.map(([icon, name, desc, tone]) => (
           <button
             className="payment-item"
             key={name}
@@ -111,7 +112,7 @@ function PaymentMethods() {
 
             <strong>{name}</strong>
 
-            <small>已开启</small>
+            <small>{desc}</small>
           </button>
         ))}
       </div>
@@ -197,9 +198,7 @@ function IncomeTrend() {
           '09-01',
           '09-02'
         ].map(date => (
-          <span key={date}>
-            {date}
-          </span>
+          <span key={date}>{date}</span>
         ))}
       </div>
     </section>
@@ -208,38 +207,10 @@ function IncomeTrend() {
 
 function LatestOrders() {
   const orders = [
-    [
-      '微',
-      'ORD202609020001',
-      '+100.00',
-      '微信支付',
-      '已支付',
-      'paid'
-    ],
-    [
-      '支',
-      'ORD202609020002',
-      '+50.00',
-      '支付宝',
-      '已支付',
-      'paid'
-    ],
-    [
-      '▤',
-      'ORD202609020003',
-      '+300.00',
-      '银行卡',
-      '处理中',
-      'processing'
-    ],
-    [
-      '微',
-      'ORD202609020004',
-      '+80.00',
-      '微信支付',
-      '已取消',
-      'cancelled'
-    ]
+    ['₮', 'ORD202609020001', '+100.00', 'USDT · TRC20', '已支付', 'paid'],
+    ['微', 'ORD202609020002', '+50.00', '微信支付', '已支付', 'paid'],
+    ['支', 'ORD202609020003', '+300.00', '支付宝', '处理中', 'processing'],
+    ['▤', 'ORD202609020004', '+80.00', '银行卡', '已取消', 'cancelled']
   ]
 
   return (
@@ -346,13 +317,9 @@ export default function Home() {
 
       <main className="home-main">
         <BalanceCard />
-
         <PaymentMethods />
-
         <IncomeTrend />
-
         <LatestOrders />
-
         <QuickActions />
       </main>
 
