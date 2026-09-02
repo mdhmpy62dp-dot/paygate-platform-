@@ -83,51 +83,27 @@ function BalanceCard() {
   )
 }
 
-function PaymentMethods({ onUSDT }) {
-  const methods = [
-    ['微', '微信支付', 'wechat'],
-    ['支', '支付宝', 'alipay'],
-    ['▤', '银行卡收款', 'bank']
+function QuickActions({ onCreateOrder }) {
+  const actions = [
+    ['＋', '创建订单', '快速创建收款订单', onCreateOrder],
+    ['▦', '收款二维码', '展示收款二维码', () => {}],
+    ['↗', '支付链接', '分享收款链接', () => {}],
+    ['↕', '资金提现', '提取到银行卡/钱包', () => {}]
   ]
 
   return (
-    <section className="home-card">
-      <div className="card-title">
-        <h2>收款方式</h2>
-        <button>管理收款方式 ›</button>
-      </div>
-
-      <div className="payment-methods">
-
-        {methods.map(([icon, name, tone]) => (
-          <button
-            className="payment-item"
-            key={name}
-          >
-            <span className={`payment-icon ${tone}`}>
-              {icon}
-            </span>
-
-            <strong>{name}</strong>
-
-            <small>已开启</small>
-          </button>
-        ))}
-
+    <section className="quick-actions">
+      {actions.map(([icon, title, desc, action]) => (
         <button
-          className="payment-item"
-          onClick={onUSDT}
+          className="quick-item"
+          key={title}
+          onClick={action}
         >
-          <span className="payment-icon usdt">
-            ₮
-          </span>
-
-          <strong>USDT TRC20</strong>
-
-          <small>已开启</small>
+          <span>{icon}</span>
+          <strong>{title}</strong>
+          <small>{desc}</small>
         </button>
-
-      </div>
+      ))}
     </section>
   )
 }
@@ -351,7 +327,8 @@ export default function Home() {
 
         <LatestOrders />
 
-        <QuickActions />
+        <QuickActions
+          onCreateOrder={() => setPage('create-order')}/>
 
       </main>
 
