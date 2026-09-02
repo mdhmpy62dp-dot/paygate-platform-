@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #dfe5ed;
+  color: #172033;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "PingFang SC",
+    "Microsoft YaHei",
+    Arial,
+    sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: #f7f9fc;
+  padding: 40px 18px;
+}
+
+.app h1 {
+  margin: 0 0 8px;
+  color: #1769ee;
+  font-size: 28px;
+}
+
+.app p {
+  margin: 0;
+  color: #8793a3;
+  font-size: 13px;
+}
