@@ -84,35 +84,29 @@ function BalanceCard() {
 
 function PaymentMethods() {
   const methods = [
-    ['₮', 'USDT', 'TRON / TRC20', 'usdt'],
-    ['微', '微信支付', '已开启', 'wechat'],
-    ['支', '支付宝', '已开启', 'alipay'],
-    ['▤', '银行卡收款', '已开启', 'bank']
+    ['微', '微信支付', 'wechat'],
+    ['支', '支付宝', 'alipay'],
+    ['▤', '银行卡收款', 'bank'],
+    ['₮', 'USDT TRC20', 'usdt']
   ]
 
   return (
     <section className="home-card">
       <div className="card-title">
         <h2>收款方式</h2>
-
-        <button>
-          管理收款方式 ›
-        </button>
+        <button>管理收款方式 ›</button>
       </div>
 
       <div className="payment-methods">
-        {methods.map(([icon, name, desc, tone]) => (
-          <button
-            className="payment-item"
-            key={name}
-          >
+        {methods.map(([icon, name, tone]) => (
+          <button className="payment-item" key={name}>
             <span className={`payment-icon ${tone}`}>
               {icon}
             </span>
 
             <strong>{name}</strong>
 
-            <small>{desc}</small>
+            <small>已开启</small>
           </button>
         ))}
       </div>
